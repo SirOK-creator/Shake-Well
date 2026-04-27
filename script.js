@@ -124,9 +124,9 @@ const playlist = [
         art: '🌲'
     },
     {
-        name: 'Живой огонь',
+        name: 'Broken Vending Moon',
         artist: 'Shake Well',
-        src: 'https://music.yandex.ru/album/41160648?utm_source=web&utm_medium=copy_link',
+        src: 'music/Broken Vending Moon.mp3',
         art: '🔥'
     }
 ];
