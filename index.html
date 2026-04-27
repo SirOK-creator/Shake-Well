@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shake Well — Музыкальная группа</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">🎵 Shake Well</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Главная</a></li>
+                <li><a href="#about">О группе</a></li>
+                <li><a href="#playlists">Плейлисты</a></li>
+            </ul>
+            <button class="burger" aria-label="Меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Главный экран -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <h1>Shake Well</h1>
+            <p class="subtitle">Инди-фолк с душой севера. Живой звук, искренние тексты.</p>
+            <div class="hero-buttons">
+                <a href="#playlists" class="btn btn-primary">Слушать</a>
+                <a href="#about" class="btn btn-outline">Узнать больше</a>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,60 C360,120 720,0 1440,60 L1440,120 L0,120 Z" fill="#f9fafb"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- О группе -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О группе</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="img/band.jpg" alt="Shake Well группа" class="about-photo">                </div>
+                <div class="about-text">
+                    <p>Мы — Shake Well, инди-фолк группа из четырёх друзей, объединённых любовью к музыке и северной природе.</p>
+                    <p>В наших песнях — шум сосен, тепло костра и истории, которые хочется рассказывать шёпотом. С 2020 года играем на фестивалях, записываем альбомы и верим, что живой звук способен лечить.</p>
+                    <div class="about-stats">
+                        <div class="stat"><strong>1</strong><span>альбом</span></div>
+                        <div class="stat"><strong>12</strong><span>песен</span></div>
+                        <div class="stat"><strong>2</strong><span>участника</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Плейлисты -->
+    <section id="playlists" class="playlists">
+        <div class="container">
+            <h2 class="section-title">Плейлисты</h2>
+            <p class="section-subtitle">Наша музыка на всех платформах</p>
+            <div class="playlist-grid">
+                <div class="playlist-card">
+                    <div class="playlist-icon">🎸</div>
+                    <h3>Northern Lights (2024)</h3>
+                    <p>Последний альбом. 10 треков о полярной ночи и надежде.</p>
+                    <div class="platform-links">
+                        <button class="platform play-track-btn" data-track="0">▶ Слушать</button>
+                        <a href="#" class="platform">Spotify</a>
+                        <a href="#" class="platform">Apple Music</a>
+                        <a href="https://music.yandex.ru/album/41160648/track/149284348?utm_source=web&utm_medium=copy_link" class="platform">Яндекс Музыка</a>
+                    </div>
+                </div>
+                <div class="playlist-card">
+                    <div class="playlist-icon">🌲</div>
+                    <h3>Forest Tapes (2022)</h3>
+                    <p>Акустический альбом, записанный в деревянном доме у озера.</p>
+                    <div class="platform-links">
+                        <button class="platform play-track-btn" data-track="1">▶ Слушать</button>
+                        <a href="#" class="platform">Spotify</a>
+                        <a href="#" class="platform">Apple Music</a>
+                        <a href="#" class="platform">Яндекс Музыка</a>
+                    </div>
+                </div>
+                <div class="playlist-card">
+                    <div class="playlist-icon">🔥</div>
+                    <h3>Live Sessions</h3>
+                    <p>Концертные записи, акустические версии и неизданное.</p>
+                    <div class="platform-links">
+                        <button class="platform play-track-btn" data-track="2">▶ Слушать</button>
+                        <a href="#" class="platform">YouTube</a>
+                        <a href="#" class="platform">VK</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Аудиоплеер -->
+            <div class="audio-player" id="audioPlayer">
+                <div class="player-content">
+                    <button class="player-close" id="playerClose" aria-label="Закрыть плеер">✕</button>
+                    
+                    <div class="player-track-info">
+                        <div class="player-album-art" id="playerArt">🎵</div>
+                        <div class="player-text">
+                            <span class="player-track-name" id="playerTrack">Выберите трек</span>
+                            <span class="player-artist-name" id="playerArtist">Shake Well</span>
+                        </div>
+                    </div>
+
+                    <audio id="audioElement" preload="metadata"></audio>
+
+                    <div class="player-controls">
+                        <button class="ctrl-btn" id="prevBtn" aria-label="Предыдущий" title="Назад">⏮</button>
+                        <button class="ctrl-btn ctrl-play" id="playBtn" aria-label="Воспроизвести" title="Play/Pause">▶</button>
+                        <button class="ctrl-btn" id="nextBtn" aria-label="Следующий" title="Вперёд">⏭</button>
+                    </div>
+
+                    <div class="player-progress-container">
+                        <span class="time" id="currentTime">0:00</span>
+                        <div class="progress-bar" id="progressBar">
+                            <div class="progress-fill" id="progressFill"></div>
+                            <div class="progress-thumb" id="progressThumb"></div>
+                        </div>
+                        <span class="time" id="durationTime">0:00</span>
+                    </div>
+
+                    <div class="player-volume-container">
+                        <span class="volume-icon" id="volumeIcon">🔊</span>
+                        <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.05" value="0.7">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Shake Well. Все права защищены.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram">📷</a>
+                <a href="#" aria-label="YouTube">▶️</a>
+                <a href="#" aria-label="Telegram">✈️</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
