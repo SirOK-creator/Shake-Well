@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -15,10 +15,11 @@
         <div class="container">
             <a href="#" class="logo">🎵 Shake Well</a>
             <ul class="nav-links">
-                <li><a href="#hero">Главная</a></li>
-                <li><a href="#about">О группе</a></li>
-                <li><a href="#playlists">Плейлисты</a></li>
+                <li><a href="#hero" data-lang-key="nav_home">Главная</a></li>
+                <li><a href="#about" data-lang-key="nav_about">О группе</a></li>
+                <li><a href="#playlists" data-lang-key="nav_playlists">Плейлисты</a></li>
             </ul>
+            <button class="lang-switch" id="langSwitch" aria-label="Switch language">🇷🇺 RU</button>
             <button class="burger" aria-label="Меню">
                 <span></span><span></span><span></span>
             </button>
@@ -28,14 +29,12 @@
     <!-- Главный экран -->
     <section id="hero" class="hero">
         <div class="stars" id="stars"></div>
-    
-        <div class="container">
         <div class="container">
             <h1>Shake Well</h1>
-            <p class="subtitle">Инди-рок с душой. Живой звук, искренние тексты.</p>
+            <p class="subtitle" data-lang-key="hero_subtitle">Инди-рок с душой. Живой звук, искренние тексты.</p>
             <div class="hero-buttons">
-                <a href="#playlists" class="btn btn-primary">Слушать</a>
-                <a href="#about" class="btn btn-outline">Узнать больше</a>
+                <a href="#playlists" class="btn btn-primary" data-lang-key="hero_listen">Слушать</a>
+                <a href="#about" class="btn btn-outline" data-lang-key="hero_about">Узнать больше</a>
             </div>
         </div>
         <div class="hero-wave">
@@ -48,17 +47,18 @@
     <!-- О группе -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">О группе</h2>
+            <h2 class="section-title" data-lang-key="about_title">О группе</h2>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="img/band.jpg" alt="Shake Well группа" class="about-photo">                </div>
+                    <div class="about-img-placeholder">📸<br><span data-lang-key="about_photo">Фото группы</span></div>
+                </div>
                 <div class="about-text">
-                    <p>Мы — Shake Well, инди-фолк группа из четырёх друзей, объединённых любовью к музыке и северной природе.</p>
-                    <p>В наших песнях — шум сосен, тепло костра и истории, которые хочется рассказывать шёпотом. С 2020 года играем на фестивалях, записываем альбомы и верим, что живой звук способен лечить.</p>
+                    <p data-lang-key="about_text1">Мы — Shake Well, инди-фолк группа из четырёх друзей, объединённых любовью к музыке и северной природе.</p>
+                    <p data-lang-key="about_text2">В наших песнях — шум сосен, тепло костра и истории, которые хочется рассказывать шёпотом. С 2020 года играем на фестивалях, записываем альбомы и верим, что живой звук способен лечить.</p>
                     <div class="about-stats">
-                        <div class="stat"><strong>1</strong><span>альбом</span></div>
-                        <div class="stat"><strong>12</strong><span>песен</span></div>
-                        <div class="stat"><strong>2</strong><span>участника</span></div>
+                        <div class="stat"><strong>1</strong><span data-lang-key="stat_albums">альбом</span></div>
+                        <div class="stat"><strong>12</strong><span data-lang-key="stat_concerts">песен</span></div>
+                        <div class="stat"><strong>2</strong><span data-lang-key="stat_members">участника</span></div>
                     </div>
                 </div>
             </div>
@@ -68,37 +68,37 @@
     <!-- Плейлисты -->
     <section id="playlists" class="playlists">
         <div class="container">
-            <h2 class="section-title">Плейлисты</h2>
-            <p class="section-subtitle">Наша музыка на всех платформах</p>
+            <h2 class="section-title" data-lang-key="playlists_title">Плейлисты</h2>
+            <p class="section-subtitle" data-lang-key="playlists_subtitle">Наша музыка на всех платформах</p>
             <div class="playlist-grid">
                 <div class="playlist-card">
                     <div class="playlist-icon">🎸</div>
                     <h3>Northern Lights (2024)</h3>
-                    <p>Последний альбом. 10 треков о полярной ночи и надежде.</p>
+                    <p data-lang-key="album1_desc">Последний альбом. 10 треков о полярной ночи и надежде.</p>
                     <div class="platform-links">
-                        <button class="platform play-track-btn" data-track="0">▶ Слушать</button>
+                        <button class="platform play-track-btn" data-track="0">▶ <span data-lang-key="listen">Слушать</span></button>
                         <a href="#" class="platform">Spotify</a>
                         <a href="#" class="platform">Apple Music</a>
-                        <a href="https://music.yandex.ru/album/41160648/track/149284348?utm_source=web&utm_medium=copy_link" class="platform">Яндекс Музыка</a>
+                        <a href="https://music.yandex.ru/album/41160648?utm_source=web&utm_medium=copy_link" class="platform" data-lang-key="yandex_music">Яндекс Музыка</a>
                     </div>
                 </div>
                 <div class="playlist-card">
                     <div class="playlist-icon">🌲</div>
                     <h3>Forest Tapes (2022)</h3>
-                    <p>Акустический альбом, записанный в деревянном доме у озера.</p>
+                    <p data-lang-key="album2_desc">Акустический альбом, записанный в деревянном доме у озера.</p>
                     <div class="platform-links">
-                        <button class="platform play-track-btn" data-track="1">▶ Слушать</button>
+                        <button class="platform play-track-btn" data-track="1">▶ <span data-lang-key="listen">Слушать</span></button>
                         <a href="#" class="platform">Spotify</a>
                         <a href="#" class="platform">Apple Music</a>
-                        <a href="#" class="platform">Яндекс Музыка</a>
+                        <a href="#" class="platform" data-lang-key="yandex_music">Яндекс Музыка</a>
                     </div>
                 </div>
                 <div class="playlist-card">
                     <div class="playlist-icon">🔥</div>
                     <h3>Live Sessions</h3>
-                    <p>Концертные записи, акустические версии и неизданное.</p>
+                    <p data-lang-key="album3_desc">Концертные записи, акустические версии и неизданное.</p>
                     <div class="platform-links">
-                        <button class="platform play-track-btn" data-track="2">▶ Слушать</button>
+                        <button class="platform play-track-btn" data-track="2">▶ <span data-lang-key="listen">Слушать</span></button>
                         <a href="#" class="platform">YouTube</a>
                         <a href="#" class="platform">VK</a>
                     </div>
@@ -113,7 +113,7 @@
                     <div class="player-track-info">
                         <div class="player-album-art" id="playerArt">🎵</div>
                         <div class="player-text">
-                            <span class="player-track-name" id="playerTrack">Выберите трек</span>
+                            <span class="player-track-name" id="playerTrack" data-lang-key="player_select">Выберите трек</span>
                             <span class="player-artist-name" id="playerArtist">Shake Well</span>
                         </div>
                     </div>
@@ -147,7 +147,7 @@
     <!-- Футер -->
     <footer class="footer">
         <div class="container">
-            <p>© 2025 Shake Well. Все права защищены.</p>
+            <p data-lang-key="footer_rights">© 2025 Shake Well. Все права защищены.</p>
             <div class="social-links">
                 <a href="#" aria-label="Instagram">📷</a>
                 <a href="#" aria-label="YouTube">▶️</a>
