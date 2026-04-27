@@ -1,4 +1,84 @@
-﻿// ========== БУРГЕР-МЕНЮ ==========
+// ========== ПЕРЕВОДЫ ==========
+const translations = {
+    ru: {
+        nav_home: 'Главная',
+        nav_about: 'О группе',
+        nav_playlists: 'Плейлисты',
+        hero_subtitle: 'Инди-фолк с душой севера. Живой звук, искренние тексты.',
+        hero_listen: 'Слушать',
+        hero_about: 'Узнать больше',
+        about_title: 'О группе',
+        about_photo: 'Фото группы',
+        about_text1: 'Мы — Sunrise Avenue, инди-фолк группа из четырёх друзей, объединённых любовью к музыке и северной природе.',
+        about_text2: 'В наших песнях — шум сосен, тепло костра и истории, которые хочется рассказывать шёпотом. С 2020 года играем на фестивалях, записываем альбомы и верим, что живой звук способен лечить.',
+        stat_albums: 'альбома',
+        stat_concerts: 'концертов',
+        stat_members: 'участника',
+        playlists_title: 'Плейлисты',
+        playlists_subtitle: 'Наша музыка на всех платформах',
+        album1_desc: 'Последний альбом. 10 треков о полярной ночи и надежде.',
+        album2_desc: 'Акустический альбом, записанный в деревянном доме у озера.',
+        album3_desc: 'Концертные записи, акустические версии и неизданное.',
+        listen: 'Слушать',
+        player_select: 'Выберите трек',
+        footer_rights: '© 2025 Sunrise Avenue. Все права защищены.',
+        yandex_music: 'Яндекс Музыка'
+    },
+    en: {
+        nav_home: 'Home',
+        nav_about: 'About',
+        nav_playlists: 'Playlists',
+        hero_subtitle: 'Indie-folk with the soul of the north. Live sound, sincere lyrics.',
+        hero_listen: 'Listen',
+        hero_about: 'Learn more',
+        about_title: 'About the Band',
+        about_photo: 'Band photo',
+        about_text1: 'We are Sunrise Avenue, an indie-folk band of four friends united by a love for music and northern nature.',
+        about_text2: 'In our songs — the sound of pines, the warmth of a campfire, and stories best told in a whisper. Since 2020, we\'ve been playing festivals, recording albums, and believing that live sound can heal.',
+        stat_albums: 'albums',
+        stat_concerts: 'concerts',
+        stat_members: 'members',
+        playlists_title: 'Playlists',
+        playlists_subtitle: 'Our music on all platforms',
+        album1_desc: 'Latest album. 10 tracks about the polar night and hope.',
+        album2_desc: 'Acoustic album recorded in a wooden house by the lake.',
+        album3_desc: 'Live recordings, acoustic versions, and unreleased tracks.',
+        listen: 'Listen',
+        player_select: 'Select a track',
+        footer_rights: '© 2025 Sunrise Avenue. All rights reserved.',
+        yandex_music: 'Yandex Music'
+    }
+};
+
+let currentLang = localStorage.getItem('lang') || 'ru';
+
+function switchLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    
+    const langBtn = document.getElementById('langSwitch');
+    if (lang === 'ru') {
+        langBtn.textContent = '🇷🇺 RU';
+    } else {
+        langBtn.textContent = '🇬🇧 EN';
+    }
+    
+    document.querySelectorAll('[data-lang-key]').forEach(el => {
+        const key = el.dataset.langKey;
+        if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
+        }
+    });
+}
+
+document.getElementById('langSwitch').addEventListener('click', () => {
+    const newLang = currentLang === 'ru' ? 'en' : 'ru';
+    switchLanguage(newLang);
+});
+
+switchLanguage(currentLang);
+
+// ========== БУРГЕР-МЕНЮ ==========
 const burger = document.querySelector('.burger');
 const navLinks = document.querySelector('.nav-links');
 
@@ -30,31 +110,29 @@ const playerArt = document.getElementById('playerArt');
 const playerClose = document.getElementById('playerClose');
 const audioPlayer = document.getElementById('audioPlayer');
 
-// Плейлист — можно использовать демо-аудио или заменить пути на свои
 const playlist = [
     {
         name: 'Spilled Ink',
-        artist: 'Danila',
+        artist: 'Shake Well',
         src: 'music/Spilled Ink.mp3',
         art: '🌌'
     },
     {
         name: 'Spilled Inks',
-        artist: 'Danila',
+        artist: 'Shake Well',
         src: 'music/Spilled Inks.mp3',
         art: '🌲'
     },
     {
         name: 'Живой огонь',
-        artist: 'Sunrise Avenue',
-        src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+        artist: 'Shake Well',
+        src: 'https://music.yandex.ru/album/41160648?utm_source=web&utm_medium=copy_link',
         art: '🔥'
     }
 ];
 
 let currentTrack = 0;
 
-// Кнопки из карточек
 function attachTrackButtons() {
     document.querySelectorAll('.play-track-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
@@ -67,7 +145,6 @@ function attachTrackButtons() {
     });
 }
 
-// Загрузка трека
 function loadTrack(index) {
     if (index < 0 || index >= playlist.length) return;
     currentTrack = index;
@@ -85,7 +162,6 @@ function loadTrack(index) {
     durationTimeEl.textContent = '0:00';
 }
 
-// Формат времени
 function formatTime(seconds) {
     if (isNaN(seconds)) return '0:00';
     const mins = Math.floor(seconds / 60);
@@ -93,7 +169,6 @@ function formatTime(seconds) {
     return `${mins}:${secs.toString().padStart(2, '0')}`;
 }
 
-// Play/Pause
 function togglePlay() {
     if (audio.paused) {
         audio.play().catch(() => {});
@@ -104,7 +179,6 @@ function togglePlay() {
 
 playBtn.addEventListener('click', togglePlay);
 
-// Обновление кнопки
 function updatePlayButton() {
     playBtn.textContent = audio.paused ? '▶' : '⏸';
 }
@@ -112,7 +186,6 @@ function updatePlayButton() {
 audio.addEventListener('play', updatePlayButton);
 audio.addEventListener('pause', updatePlayButton);
 
-// Прогресс
 audio.addEventListener('timeupdate', () => {
     if (audio.duration) {
         const percent = (audio.currentTime / audio.duration) * 100;
@@ -126,14 +199,12 @@ audio.addEventListener('loadedmetadata', () => {
     durationTimeEl.textContent = formatTime(audio.duration);
 });
 
-// Клик по прогресс-бару
 progressBar.addEventListener('click', (e) => {
     const rect = progressBar.getBoundingClientRect();
     const percent = (e.clientX - rect.left) / rect.width;
     audio.currentTime = percent * audio.duration;
 });
 
-// Предыдущий/следующий
 prevBtn.addEventListener('click', () => {
     const newIndex = currentTrack - 1 < 0 ? playlist.length - 1 : currentTrack - 1;
     loadTrack(newIndex);
@@ -146,7 +217,6 @@ nextBtn.addEventListener('click', () => {
     audio.play().catch(() => {});
 });
 
-// Громкость
 audio.volume = volumeSlider.value;
 
 volumeSlider.addEventListener('input', () => {
@@ -171,20 +241,16 @@ function updateVolumeIcon() {
     else volumeIcon.textContent = '🔊';
 }
 
-// Закрыть плеер
 playerClose.addEventListener('click', () => {
     audio.pause();
     audioPlayer.style.display = 'none';
-    // Показать снова при следующем выборе трека
     setTimeout(() => { audioPlayer.style.display = ''; }, 100);
 });
 
-// Когда трек закончился — следующий
 audio.addEventListener('ended', () => {
     nextBtn.click();
 });
 
-// Инициализация
 attachTrackButtons();
 
 // ========== ЗВЁЗДНОЕ НЕБО ==========
