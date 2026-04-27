@@ -714,3 +714,10 @@ img { max-width: 100%; display: block; }
         grid-template-columns: 1fr;
     }
 }
+/* Фото группы */
+.about-photo {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    object-fit: cover;
+}
