@@ -186,3 +186,35 @@ audio.addEventListener('ended', () => {
 
 // Инициализация
 attachTrackButtons();
+
+// ========== ЗВЁЗДНОЕ НЕБО ==========
+function createStars() {
+    const starsContainer = document.getElementById('stars');
+    if (!starsContainer) return;
+    
+    const starCount = 80;
+    
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        
+        const size = Math.random() * 2.5 + 1;
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        const duration = Math.random() * 3 + 2;
+        const delay = Math.random() * 4;
+        
+        star.style.cssText = `
+            width: ${size}px;
+            height: ${size}px;
+            left: ${x}%;
+            top: ${y}%;
+            --duration: ${duration}s;
+            --delay: ${delay}s;
+        `;
+        
+        starsContainer.appendChild(star);
+    }
+}
+
+createStars();
