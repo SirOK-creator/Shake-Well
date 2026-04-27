@@ -60,7 +60,7 @@ function switchLanguage(lang) {
     if (lang === 'ru') {
         langBtn.textContent = '🇷🇺 RU';
     } else {
-        langBtn.textContent = '🇬🇧 EN';
+        langBtn.textContent = '🇺🇸 EN';
     }
     
     document.querySelectorAll('[data-lang-key]').forEach(el => {
